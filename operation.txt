@@ -1,0 +1,42 @@
+exec_yield_critical: in schedule.S
+        - Called with the saved flags register in R0
+          (i.e. with section after ENTER_CRITICAL(section))
+                OK
+
+        - Uses 1 stack word
+                OK
+
+        - Stores the context in the current task, taken from the kernel
+                OK
+
+        - Sets the SP to the scheduler stack
+                OK
+
+        - Calls exec_schedule(EXEC_YIELD)
+                OK
+
+exec_schedule: in exec.c
+        - Should be called with interrupts disabled(?)
+        - Argument interrupt
+        - Stack will be scheduler_stack
+        - If interrupt is PREEMPT, it will rotate the ready task list for
+          all priorities
+        - It will find the first ready task
+        - Make it the current task
+        - Check its stack
+        - call exec_continue(interrupt)
+
+exec_continue: in exec.c
+        - If interrupt is YIELD call exec_restore_from_user
+          otherwise exec_restore_from_interrupt with
+          a pointer to the current kernel task in r0
+
+exec_restore_from_user:
+        - Skips the 8 linked list bytes in r0
+        - Restores the flags, ENABLING INTERRUPTS
+        - We ARE IN USER MODE with interrupts disabled!
+        - Is my problem there?
+                maybe!
+
+                We must
+        

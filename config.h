@@ -1,0 +1,154 @@
+/* config.h
+ *
+ * Copyright (C)2007 Therodox R&D
+ * All rights reserved
+ */
+
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#define F_OSC 14745600
+#define PLL_MSEL 3
+#define PLL_PSEL 1
+#define APBDIV_SEL 1
+#define F_CPU (4 * F_OSC)
+#define PCLK F_CPU
+
+#define SERIAL_BAUD 38400
+/*#define SERIAL_DL 96*/
+#define SERIAL_DL (PCLK / (16 * SERIAL_BAUD))
+
+#define SPI_RATE 1000000
+
+#define WATCHDOG_STACK_SIZE 96
+#define DSP_STACK_SIZE 196
+#define ALARM_STACK_SIZE 96 
+#define COMMAND_STACK_SIZE 128
+#define LED_STACK_SIZE 96
+#define KEYPAD_STACK_SIZE 96
+#define UI_STACK_SIZE 196
+#define DISK_STACK_SIZE 128
+#define EXEC_SCHEDULER_STACK_SIZE 256
+
+#define WATCHDOG_PRI       EXEC_PRI_0
+#define DSP_PRI            EXEC_PRI_1
+#define ALARM_PRI          EXEC_PRI_2
+#define LED_PRI            EXEC_PRI_2
+#define COMMAND_PRI        EXEC_PRI_3
+#define KEYPAD_PRI         EXEC_PRI_3
+#define UI_PRI             EXEC_PRI_3
+#define DISK_PRI           EXEC_PRI_4
+
+#define DIAGNOSIS_ENABLED 1
+
+#define TIMER0_FREQUENCY 12000
+#define TIMER0_PERIOD (PCLK / TIMER0_FREQUENCY)
+
+#define PWM0_FREQUENCY 61000
+#define PWM0_PERIOD (PCLK / PWM0_FREQUENCY)
+
+#define ADC_FREQUENCY 18000
+#define ADC_BUFFER_LENGTH 512
+#define TIMER1_PERIOD (PCLK / (2 * ADC_FREQUENCY))
+
+#define SECURITY_DELAY ((int) (0.1 * F_CPU))
+
+#define FIX 16
+
+/* 01234567012345 */
+#define UI_LCD_BANNER1 "Jamcatch 2007B"
+#define UI_LCD_BANNER2 "Sylco/Therodox"
+#define UI_DEFAULT_BANNER "Jamcatch"
+
+#define UI_BANNER_DURATION TICKS(1.5)
+#define UI_PERIOD TICKS(0.05)
+#define UI_BANNER_PERIOD TICKS(0.25)
+#define UI_DEMO_PERIOD TICKS(0.05)
+#define UI_IDLE_COUNT 100
+#define UI_MESSAGE_DURATION TICKS(5.0)
+#define UI_KEYPAD_REPEAT_INITIATE (TICKS(0.15) / UI_PERIOD)
+#define UI_KEYPAD_REPEAT (TICKS(0.05) / UI_PERIOD)
+
+#define ALARM_ON_PERIOD TICKS(3.0)
+#define ALARM_REST_PERIOD TICKS(5.0)
+
+#define ALARM_A_PIN 21
+#define ALARM_A_PORT PORT1
+
+#define ALARM_B_PIN 22
+#define ALARM_B_PORT PORT1
+
+#define ALARM_THRESHOLD 18
+#define ALARM_DECAY 20
+#define ALARM_DECAY_MAX 30
+#define ALARM_ENABLED true
+
+#define EAS_THRESHOLD 5
+
+#define CHANNELS 1
+
+#define MMC_RETRIES 10
+#define MMC_WRITE_RETRIES 1000
+#define MMC_READ_RETRIES 1000
+
+#define WATCHDOG_TIMEOUT_S 30.0
+#define WATCHDOG_TIMEOUT ((u32) (PCLK * 0.25 * (WATCHDOG_TIMEOUT_S)))
+#define WATCHDOG_RELOAD (TICKS(10.0))
+#define WATCHDOG_FOR_REAL 1
+
+#define UI_WATCHDOG_ENABLE 0
+
+#define KEYPAD_RIGHT_PORT PORT1
+#define KEYPAD_RIGHT_PIN 19
+
+#define KEYPAD_LEFT_PORT PORT1
+#define KEYPAD_LEFT_PIN 16
+
+#define KEYPAD_UP_PORT PORT1
+#define KEYPAD_UP_PIN 18
+
+#define KEYPAD_DOWN_PORT PORT1
+#define KEYPAD_DOWN_PIN 17
+
+#define KEYPAD_CONSISTENCY_COUNT 4
+#define KEYPAD_PERIOD TICKS(0.003125)
+
+#define LED_A_PIN 22
+#define LED_A_PORT PORT1
+
+#define LED_B_PIN 23
+#define LED_B_PORT PORT1
+
+#define STATUS_LED_PIN 31
+#define STATUS_LED_PORT PORT0
+
+#define LED_PERIOD TICKS(0.025)
+
+#define EXEC_CHECK_STACK_COOKIES 1
+#define EXEC_CHECK_STACK_BOUNDS 1
+#define EXEC_TRACE_STACK_USAGE 1
+
+/* LCD */
+
+#define LCD_LINES 2
+#define LCD_COLUMNS 16
+#define LCD_DELAY_US 5
+
+#define LCD_PIN 0
+#define LCD_PORT PORT0
+
+#define LCD_DB4_PIN 8
+#define LCD_DB5_PIN 10
+#define LCD_DB6_PIN 12
+#define LCD_DB7_PIN 13
+#define LCD_RW_PIN 21
+#define LCD_RS_PIN 15
+#define LCD_E_PIN 22
+
+#define LCD_TIMEOUT 1000
+#define LCD_RETRIES 5
+
+#define DISK_SETTINGS_BLOCK 0
+#define DISK_LOG_BLOCK 1
+
+#endif

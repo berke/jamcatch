@@ -1,0 +1,37 @@
+> r 40000000
+Memory[40000000] = 00000001
+> r e0004018
+Memory[e0004018] = 07270e00
+> r e0004018
+Memory[e0004018] = 07270e00
+> w e0004018 10000
+Memory[e0004018] = 00010000
+> e
+ERROR "Unknown command"
+> r e0004014
+Memory[e0004014] = 00000303
+> w e0004014 3
+Memory[e0004014] = 00000003
+> r e
+Memory[0000000e] = f014e59f
+> r e0004000
+Memory[e0004000] = 00000000
+> r e0004004
+Memory[e0004004] = 00000000
+> w e0004004 
+ERROR "Wrong number of parametrs"
+> r e0004008
+Memory[e0004008] = 00000000
+> r e000400c
+Memory[e000400c] = 00000000
+> r e0004014
+Memory[e0004014] = 00000003
+> r e0004000
+Memory[e0004000] = 00000000
+> w e0004000 1
+Memory[e0004000] = 00000001
+> r e0004004
+Memory[e0004004] = 00000000
+> w e004004 
+ERROR "Wrong number of parametrs"
+

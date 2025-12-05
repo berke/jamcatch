@@ -1,0 +1,51 @@
+/* spi_mmc.h
+ *
+ * Copyright (C)2007 Therodox R&D
+ * All rights reserved
+ */
+
+#ifndef SPI_MMC_H
+#define SPI_MMC_H
+
+typedef enum {
+  MMC_GO_IDLE_STATE = 0,
+  MMC_SEND_OP_COND = 1,
+  MMC_SEND_CSD = 9,
+  MMC_SEND_CID = 10,
+  MMC_STOP_TRANSMISSION = 12,
+  MMC_SET_BLOCKLEN = 16,
+  MMC_READ_SINGLE_BLOCK = 17,
+  MMC_WRITE_BLOCK = 24,
+  MMC_READ_OCR = 58,
+  MMC_CRC_ON_OFF = 59
+} mmc_command_t;
+
+#define MMC_R_IDLE 1
+#define MMC_R_ERASE_RESET 2
+#define MMC_R_ILLEGAL 4
+#define MMC_R_CRC 8
+#define MMC_R_ERASE_SEQUENCE_ERROR 16
+#define MMC_R_ADDRESS_ERROR 32
+#define MMC_R_PARAMETER_ERROR 64
+
+#define MMC_TOKEN_SINGLE 0xfe
+#define MMC_TOKEN_MULTIPLE 0xfc
+#define MMC_TOKEN_STOP 0xfd
+
+#define MMC_E_ERROR 1
+#define MMC_E_CC_ERROR 2
+#define MMC_E_ECC_FAILED 4
+#define MMC_E_OUT_OF_RANGE 8
+#define MMC_E_CARD_LOCKED 16
+
+#define MMC_OCR_POWER_UP 0x80000000
+#define MMC_OCR_2700_3600 0xff8000
+
+#define MMC_DATA_RESPONSE_MASK 0x11
+#define MMC_DATA_RESPONSE_VALUE 0x01
+#define MMC_DATA_STATUS_MASK 0x0e
+#define MMC_DATA_STATUS_ACCEPTED 4
+#define MMC_DATA_STATUS_REJECTED_CRC_ERROR 10
+#define MMC_DATA_STATUS_REJECTED_WRITE_ERROR 12
+
+#endif
