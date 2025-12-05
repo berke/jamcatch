@@ -65,6 +65,8 @@ nice and clean.
 
 This is based on the header files.
 
+| File           | Purpose                                                        |
+|----------------|----------------------------------------------------------------|
 | `abort.h`      | An abort macro that places a cookie in RAM for debugging       |
 | `adc.h`        | ADC acquisition (interrupt and buffer)                         |
 | `alarm.h`      | Alarm output (relay handling)                                  |
@@ -119,6 +121,8 @@ This is based on the header files.
 The detection code is under the `detector` directory, so that it can be compiled as a library
 and tested separately.
 
+| File                | Purpose                      |
+|---------------------|------------------------------|
 | `detect.h`          | Top-level detector process   |
 | `detector_config.h` | Parameters for the detector  |
 | `test_detector.c`   | Test driver for the detector |
